@@ -1,8 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
 import { CurrencyBoom } from './canvas/currency-boom';
-import { CurrencyAPIService } from './services/currency-api.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,9 +11,9 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('currency_boom') public currencyBoom!: ElementRef<HTMLElement>;
   public title = 'Currency Converter';
 
-  constructor(private currencySrc: CurrencyAPIService) {}
+  constructor() {}
 
-  async ngAfterViewInit(): Promise<void> {
+  ngAfterViewInit() {
     const canvas = this.currencyBoom.nativeElement as HTMLCanvasElement;
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     const gridEl = this.grid.nativeElement as HTMLElement;
@@ -25,9 +22,7 @@ export class AppComponent implements AfterViewInit {
     const gheight = Math.round(+gridStyle.height.replace('px', ''));
     canvas.width = gwidth;
     canvas.height = gheight;
-    const cl = await firstValueFrom(this.currencySrc.GetCurrencyList());
-    const ccodes = Object.keys(cl);
-    const cb = new CurrencyBoom(canvas, ctx, ccodes);
+    const cb = new CurrencyBoom(canvas, ctx);
     cb.Draw();
   }
 }

@@ -1,7 +1,6 @@
 import { MathExt } from "../utils/math-ext";
 import { Utils } from "../utils/utils";
 import { FlyingObject } from "./flying-object";
-import CurrencyList from 'currency-list'
 
 export class CurrencyBoom {
 
@@ -12,23 +11,13 @@ export class CurrencyBoom {
 
    constructor(
       canvas: HTMLCanvasElement,
-      ctx: CanvasRenderingContext2D,
-      currency_codes: string[]) {
+      ctx: CanvasRenderingContext2D) {
       this.canvas = canvas;
       this.ctx = ctx;
-      this.symbols = [];
-      this.initSymbols(currency_codes);
+      this.symbols = ['؋', '$', 'ƒ', '₼', 'R$', '៛', '¥', '₡',
+         '₱', '£', '¢', '£', '₹', '﷼'];
       this.flyingObjs = [];
       this.initObjects();      
-   }
-
-   private initSymbols(currency_codes: string[]): void {
-      currency_codes.forEach(cc => {
-         const cs = CurrencyList.get(cc)?.symbol_native;
-         if (cs) {
-            this.symbols.push(cs);
-         }
-      });
    }
 
    private initObjects(): void {
