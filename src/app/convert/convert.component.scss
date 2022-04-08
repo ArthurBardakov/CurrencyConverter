@@ -16,6 +16,8 @@
       align-items: center;
       flex-wrap: wrap;
       padding: 25px;
+      background-color: ghostwhite;
+      border-radius: 15px;
 
       .convert_field {
          position: relative;
@@ -25,7 +27,7 @@
          outline: none;
          background-color: #fef5bae3;
          border-radius: 8px;
-         border-color: #fef5baa8;
+         border-color: #eceadfa8;
          border-width: medium;
       }
 
@@ -33,6 +35,6 @@
       #to_currency option {
          background: rgba(255, 162, 0, 0.3);
          color: grey;
-     }
+      }
    }
 }
