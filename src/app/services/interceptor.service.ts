@@ -13,7 +13,9 @@ export class InterceptorService implements HttpInterceptor {
   constructor(@Inject(APP_CONFIG) protected config: IAppConfig) {
     this.fixerAPIHeaders = new HttpHeaders({
       'X-RapidAPI-Host': 'fixer-fixer-currency-v1.p.rapidapi.com',
-      'X-RapidAPI-Key': '6f45bc2291msheaffc4acad25898p1c1f32jsn42d5b20a0e14'
+      'X-RapidAPI-Key': '6f45bc2291msheaffc4acad25898p1c1f32jsn42d5b20a0e14',
+      'Access-Control-Allow-Origin': 'https://arthurbardakov.github.io',
+      'Access-Control-Allow-Headers': 'X-Token, Content-Type'
     });
   }
 
