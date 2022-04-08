@@ -1,0 +1,31 @@
+<div id="convert_wrapper">
+   <input #from_value type="number" value="{{(FromValue$ | async)?.toFixed(2) || 0}}"
+          id="from_value" class="convert_field"
+          (keyup)="Convert(from_value.value, true)">
+   <select name="Currency Type" id="from_currency" class="convert_field"
+           [(ngModel)]="FromCurrency" (ngModelChange)="Convert(from_value.value, true)">
+      <ng-container *ngTemplateOutlet="getCurrencies;
+                     context: { slct_value: FromCurrency }">
+      </ng-container>
+   </select>
+   <input #to_value type="number" value="{{(ToValue$ | async)?.toFixed(2) || 0}}"
+          id="to_value" class="convert_field"
+          (keyup)="Convert(to_value.value, false)">
+   <select name="Currency Type" id="to_currency" class="convert_field"
+           [(ngModel)]="ToCurrency" (ngModelChange)="Convert(to_value.value, false)">
+      <ng-container *ngTemplateOutlet="getCurrencies;
+                     context: { slct_value: ToCurrency }">
+      </ng-container>
+   </select>
+</div>
+<ng-template #getCurrencies let-slct_value='slct_value'>
+   <ng-container *ngIf="(CurrencyList$ | async); else loading">
+      <option value="{{crc.key}}" *ngFor="let crc of CurrencyList$ | async | keyvalue"
+               [selected]="crc.key === slct_value">
+         {{crc.key + ' - ' + crc.value}}
+      </option>
+   </ng-container>
+</ng-template>
+<ng-template #loading>
+   <option>Loading currencies...</option>
+</ng-template>

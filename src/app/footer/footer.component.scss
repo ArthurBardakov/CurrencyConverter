@@ -1,0 +1,42 @@
+#support_wrapper {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   width: 70%;
+   max-width: 300px;
+   height: 100%;
+   font-family: fire;
+   font-size: 2rem;
+   color: #4a88ca;
+   background-image: url('../../assets/heart-shape.svg');
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position: 10%;
+
+   #ft_support {
+      margin-right: 10%;
+   }
+
+   #ft_ukraine {
+      margin-left: 10%;
+   }
+
+   .ft_support_text {
+      transform: translateX(-45%);
+   }
+}
+
+#donate {
+   width: 80px;
+   height: 80px;
+   position: absolute;
+   right: 1%;
+   bottom: 1%;
+   background-image: url(../../assets/imgs/hands.png);
+   background-size: contain;
+   background-repeat: no-repeat;
+   cursor: pointer;
+}

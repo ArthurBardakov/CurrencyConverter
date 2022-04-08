@@ -1,0 +1,19 @@
+<div id="basic_relation">
+   <div id="usd_to_uah" class="usd_eur_uah">
+      <ng-container *ngTemplateOutlet="crc_value;
+                     context: {crc: this.UAH_TO_USD, crc_type: 'USD'}">
+      </ng-container>
+   </div>
+   <div id="eur_to_uah" class="usd_eur_uah">
+      <ng-container *ngTemplateOutlet="crc_value;
+                     context: {crc: this.UAH_TO_EUR, crc_type: 'EUR'}">
+      </ng-container>
+   </div>
+</div>
+<ng-template #crc_value let-crc='crc' let-crc_type='crc_type'>
+   <span class="crc_amount">1 </span>
+   <span>{{crc_type}}</span>
+   -
+   <span class="crc_amount">{{(crc | async | number : '1.2-2') || 'loading...'}} </span>
+   <span>UAH</span>
+</ng-template>
